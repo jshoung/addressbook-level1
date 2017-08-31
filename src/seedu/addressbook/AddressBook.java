@@ -129,6 +129,10 @@ public class AddressBook {
     private static final String COMMAND_HELP_DESC = "Shows program usage instructions.";
     private static final String COMMAND_HELP_EXAMPLE = COMMAND_HELP_WORD;
 
+    private static final String COMMAND_VERSION_WORD = "version";
+    private static final String COMMAND_VERSION_DESC = "Displays version info of program";
+    private static final String COMMAND_VERSION_EXAMPLE = COMMAND_VERSION_WORD;
+
     private static final String COMMAND_EXIT_WORD = "exit";
     private static final String COMMAND_EXIT_DESC = "Exits the program.";
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
@@ -381,6 +385,8 @@ public class AddressBook {
             return executeClearAddressBook();
         case COMMAND_HELP_WORD:
             return getUsageInfoForAllCommands();
+        case COMMAND_VERSION_WORD:
+            return getVersion();
         case COMMAND_EXIT_WORD:
             executeExitProgramRequest();
         default:
@@ -1080,6 +1086,11 @@ public class AddressBook {
      * ===============================================
      */
 
+    /** Returns version info for program */
+    private static String getVersion() {
+        return VERSION;
+    }
+
     /** Returns usage info for all commands */
     private static String getUsageInfoForAllCommands() {
         return getUsageInfoForAddCommand() + LS
@@ -1087,6 +1098,7 @@ public class AddressBook {
                 + getUsageInfoForViewCommand() + LS
                 + getUsageInfoForDeleteCommand() + LS
                 + getUsageInfoForClearCommand() + LS
+                + getUsageInfoForVersionCommand() + LS
                 + getUsageInfoForExitCommand() + LS
                 + getUsageInfoForHelpCommand();
     }
@@ -1116,6 +1128,12 @@ public class AddressBook {
     private static String getUsageInfoForClearCommand() {
         return String.format(MESSAGE_COMMAND_HELP, COMMAND_CLEAR_WORD, COMMAND_CLEAR_DESC) + LS
                 + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_CLEAR_EXAMPLE) + LS;
+    }
+
+    /** Returns string for showing 'version' command usage instruction */
+    private static String getUsageInfoForVersionCommand() {
+        return String.format(MESSAGE_COMMAND_HELP, COMMAND_VERSION_WORD, COMMAND_VERSION_DESC) + LS
+                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_VERSION_EXAMPLE) + LS;
     }
 
     /** Returns the string for showing 'view' command usage instruction */
